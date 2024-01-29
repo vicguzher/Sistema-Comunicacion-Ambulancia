@@ -1,0 +1,3 @@
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/Core/Src/usart.c:33:6:MX_USART2_UART_Init	8	static
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/Core/Src/usart.c:76:6:HAL_UART_MspInit	104	static
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/Core/Src/usart.c:165:6:HAL_UART_MspDeInit	8	static
