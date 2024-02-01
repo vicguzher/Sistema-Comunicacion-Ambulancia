@@ -3367,7 +3367,7 @@ static void PingPong_Process(void)
  8001394:	20000489 	.word	0x20000489
  8001398:	2000048a 	.word	0x2000048a
  800139c:	20000486 	.word	0x20000486
- 80013a0:	20000024 	.word	0x20000024
+ 80013a0:	20000023 	.word	0x20000023
  80013a4:	200004b8 	.word	0x200004b8
  80013a8:	20000268 	.word	0x20000268
  80013ac:	08009440 	.word	0x08009440
@@ -4298,7 +4298,7 @@ HAL_StatusTypeDef HAL_Init(void)
  8001944:	f7fe ff70 	bl	8000828 <HAL_MspInit>
  8001948:	e7f9      	b.n	800193e <HAL_Init+0x1a>
  800194a:	bf00      	nop
- 800194c:	20000028 	.word	0x20000028
+ 800194c:	20000024 	.word	0x20000024
 
 08001950 <HAL_SuspendTick>:
   * @retval None
@@ -5943,7 +5943,7 @@ HAL_StatusTypeDef HAL_PWREx_DisableLowPowerRunMode(void)
 }
  80022f2:	4770      	bx	lr
  80022f4:	58000400 	.word	0x58000400
- 80022f8:	20000028 	.word	0x20000028
+ 80022f8:	20000024 	.word	0x20000024
  80022fc:	431bde83 	.word	0x431bde83
 
 08002300 <HAL_PWREx_EnterSTOP2Mode>:
@@ -6816,8 +6816,8 @@ __STATIC_INLINE uint32_t LL_RCC_PLL_GetMainSource(void)
  800299a:	2003      	movs	r0, #3
  800299c:	e107      	b.n	8002bae <HAL_RCC_OscConfig+0x642>
  800299e:	bf00      	nop
- 80029a0:	20000028 	.word	0x20000028
- 80029a4:	2000002c 	.word	0x2000002c
+ 80029a0:	20000024 	.word	0x20000024
+ 80029a4:	20000028 	.word	0x20000028
  80029a8:	58000400 	.word	0x58000400
       if ((RCC_OscInitStruct->LSEState == RCC_LSE_ON)
  80029ac:	68e3      	ldr	r3, [r4, #12]
@@ -7404,8 +7404,8 @@ __STATIC_INLINE uint32_t LL_RCC_IsActiveFlag_PPRE2(void)
  8002e28:	2001      	movs	r0, #1
  8002e2a:	e7fa      	b.n	8002e22 <HAL_RCC_ClockConfig+0x252>
  8002e2c:	58004000 	.word	0x58004000
- 8002e30:	20000028 	.word	0x20000028
- 8002e34:	2000002c 	.word	0x2000002c
+ 8002e30:	20000024 	.word	0x20000024
+ 8002e34:	20000028 	.word	0x20000028
 
 08002e38 <HAL_RCC_GetPCLK1Freq>:
 {
@@ -8859,7 +8859,7 @@ __STATIC_INLINE void LL_EXTI_EnableIT_32_63(uint32_t ExtiLine)
  800369e:	bf00      	nop
  80036a0:	58000800 	.word	0x58000800
  80036a4:	58000400 	.word	0x58000400
- 80036a8:	20000028 	.word	0x20000028
+ 80036a8:	20000024 	.word	0x20000024
 
 080036ac <SUBGHZSPI_Transmit>:
   * @param  Data  data to transmit
@@ -8966,7 +8966,7 @@ HAL_StatusTypeDef SUBGHZSPI_Transmit(SUBGHZ_HandleTypeDef *hsubghz,
  8003716:	b002      	add	sp, #8
  8003718:	4770      	bx	lr
  800371a:	bf00      	nop
- 800371c:	20000028 	.word	0x20000028
+ 800371c:	20000024 	.word	0x20000024
  8003720:	58010000 	.word	0x58010000
 
 08003724 <SUBGHZSPI_Receive>:
@@ -9075,7 +9075,7 @@ HAL_StatusTypeDef SUBGHZSPI_Receive(SUBGHZ_HandleTypeDef *hsubghz,
 }
  8003798:	b002      	add	sp, #8
  800379a:	4770      	bx	lr
- 800379c:	20000028 	.word	0x20000028
+ 800379c:	20000024 	.word	0x20000024
  80037a0:	58010000 	.word	0x58010000
 
 080037a4 <SUBGHZ_WaitOnBusy>:
@@ -9145,7 +9145,7 @@ HAL_StatusTypeDef SUBGHZ_WaitOnBusy(SUBGHZ_HandleTypeDef *hsubghz)
   status = HAL_OK;
  80037f0:	2000      	movs	r0, #0
  80037f2:	e7e6      	b.n	80037c2 <SUBGHZ_WaitOnBusy+0x1e>
- 80037f4:	20000028 	.word	0x20000028
+ 80037f4:	20000024 	.word	0x20000024
  80037f8:	58000400 	.word	0x58000400
 
 080037fc <SUBGHZ_CheckDeviceReady>:
@@ -9187,7 +9187,7 @@ HAL_StatusTypeDef SUBGHZ_WaitOnBusy(SUBGHZ_HandleTypeDef *hsubghz)
  8003842:	f8c2 3090 	str.w	r3, [r2, #144]	; 0x90
 }
  8003846:	e7de      	b.n	8003806 <SUBGHZ_CheckDeviceReady+0xa>
- 8003848:	20000028 	.word	0x20000028
+ 8003848:	20000024 	.word	0x20000024
  800384c:	58000400 	.word	0x58000400
 
 08003850 <HAL_SUBGHZ_WriteRegisters>:
@@ -13116,7 +13116,7 @@ static void payload_integration( uint8_t *outBuffer, uint8_t *inBuffer, uint8_t 
 }
  8005332:	e7ee      	b.n	8005312 <RadioSetMaxPayloadLength+0xe>
  8005334:	200005f0 	.word	0x200005f0
- 8005338:	20000030 	.word	0x20000030
+ 8005338:	2000002c 	.word	0x2000002c
 
 0800533c <RadioRead>:
 {
@@ -15137,7 +15137,7 @@ static void payload_integration( uint8_t *outBuffer, uint8_t *inBuffer, uint8_t 
  8006280:	200005f0 	.word	0x200005f0
  8006284:	0800937c 	.word	0x0800937c
  8006288:	080097a0 	.word	0x080097a0
- 800628c:	20000030 	.word	0x20000030
+ 800628c:	2000002c 	.word	0x2000002c
 
 08006290 <RadioSetRxConfig>:
 {
@@ -15485,7 +15485,7 @@ static void payload_integration( uint8_t *outBuffer, uint8_t *inBuffer, uint8_t 
  800656e:	f000 f8a1 	bl	80066b4 <SUBGRF_WriteRegister>
  8006572:	e7dd      	b.n	8006530 <RadioSetRxConfig+0x2a0>
  8006574:	200005f0 	.word	0x200005f0
- 8006578:	20000030 	.word	0x20000030
+ 8006578:	2000002c 	.word	0x2000002c
  800657c:	08009384 	.word	0x08009384
  8006580:	0800937c 	.word	0x0800937c
  8006584:	080097a0 	.word	0x080097a0
@@ -18648,10 +18648,10 @@ uint8_t n = 0U;
       UTIL_SEQ_Idle( );
  8007936:	f7f9 f81f 	bl	8000978 <UTIL_SEQ_Idle>
  800793a:	e7f5      	b.n	8007928 <UTIL_SEQ_Run+0xf8>
- 800793c:	20000034 	.word	0x20000034
+ 800793c:	20000030 	.word	0x20000030
  8007940:	200009a8 	.word	0x200009a8
  8007944:	20000994 	.word	0x20000994
- 8007948:	20000038 	.word	0x20000038
+ 8007948:	20000034 	.word	0x20000034
  800794c:	20000998 	.word	0x20000998
  8007950:	200009a0 	.word	0x200009a0
  8007954:	20000990 	.word	0x20000990
@@ -19864,7 +19864,7 @@ int tiny_vsnprintf_like(char *buf, const int size, const char *fmt, va_list args
  8007fea:	e9c1 3004 	strd	r3, r0, [r1, #16]
  8007fee:	f020 4000 	bic.w	r0, r0, #2147483648	; 0x80000000
  8007ff2:	bd10      	pop	{r4, pc}
- 8007ff4:	20000094 	.word	0x20000094
+ 8007ff4:	20000090 	.word	0x20000090
  8007ff8:	08009947 	.word	0x08009947
  8007ffc:	0800995e 	.word	0x0800995e
  8008000:	abcd330e 	.word	0xabcd330e
@@ -19923,9 +19923,9 @@ int tiny_vsnprintf_like(char *buf, const int size, const char *fmt, va_list args
  8008084:	4803      	ldr	r0, [pc, #12]	; (8008094 <stdio_exit_handler+0x14>)
  8008086:	f000 b869 	b.w	800815c <_fwalk_sglue>
  800808a:	bf00      	nop
- 800808c:	2000003c 	.word	0x2000003c
+ 800808c:	20000038 	.word	0x20000038
  8008090:	08008cc1 	.word	0x08008cc1
- 8008094:	20000048 	.word	0x20000048
+ 8008094:	20000044 	.word	0x20000044
 
 08008098 <cleanup_stdio>:
  8008098:	6841      	ldr	r1, [r0, #4]
@@ -20061,7 +20061,7 @@ int tiny_vsnprintf_like(char *buf, const int size, const char *fmt, va_list args
  80081c8:	f85d eb04 	ldr.w	lr, [sp], #4
  80081cc:	b003      	add	sp, #12
  80081ce:	4770      	bx	lr
- 80081d0:	20000094 	.word	0x20000094
+ 80081d0:	20000090 	.word	0x20000090
  80081d4:	ffff0208 	.word	0xffff0208
 
 080081d8 <__sread>:
@@ -20240,7 +20240,7 @@ int tiny_vsnprintf_like(char *buf, const int size, const char *fmt, va_list args
  800833e:	6818      	ldr	r0, [r3, #0]
  8008340:	4770      	bx	lr
  8008342:	bf00      	nop
- 8008344:	20000094 	.word	0x20000094
+ 8008344:	20000090 	.word	0x20000090
 
 08008348 <__libc_init_array>:
  8008348:	b570      	push	{r4, r5, r6, lr}
@@ -20316,7 +20316,7 @@ int tiny_vsnprintf_like(char *buf, const int size, const char *fmt, va_list args
  80083da:	461c      	mov	r4, r3
  80083dc:	e7f3      	b.n	80083c6 <__assert_func+0x12>
  80083de:	bf00      	nop
- 80083e0:	20000094 	.word	0x20000094
+ 80083e0:	20000090 	.word	0x20000090
  80083e4:	080099b6 	.word	0x080099b6
  80083e8:	080099c3 	.word	0x080099c3
  80083ec:	080099f1 	.word	0x080099f1
@@ -20398,7 +20398,7 @@ int tiny_vsnprintf_like(char *buf, const int size, const char *fmt, va_list args
  8008488:	6818      	ldr	r0, [r3, #0]
  800848a:	f000 b823 	b.w	80084d4 <_malloc_r>
  800848e:	bf00      	nop
- 8008490:	20000094 	.word	0x20000094
+ 8008490:	20000090 	.word	0x20000090
 
 08008494 <sbrk_aligned>:
  8008494:	b570      	push	{r4, r5, r6, lr}
@@ -21342,7 +21342,7 @@ int tiny_vsnprintf_like(char *buf, const int size, const char *fmt, va_list args
  8008d28:	f85d eb04 	ldr.w	lr, [sp], #4
  8008d2c:	b003      	add	sp, #12
  8008d2e:	4770      	bx	lr
- 8008d30:	20000094 	.word	0x20000094
+ 8008d30:	20000090 	.word	0x20000090
 
 08008d34 <memmove>:
  8008d34:	4288      	cmp	r0, r1
@@ -21833,7 +21833,7 @@ int tiny_vsnprintf_like(char *buf, const int size, const char *fmt, va_list args
  800919a:	e7f4      	b.n	8009186 <__swsetup_r+0x92>
  800919c:	2000      	movs	r0, #0
  800919e:	e7f7      	b.n	8009190 <__swsetup_r+0x9c>
- 80091a0:	20000094 	.word	0x20000094
+ 80091a0:	20000090 	.word	0x20000090
 
 080091a4 <_raise_r>:
  80091a4:	291f      	cmp	r1, #31
@@ -21877,7 +21877,7 @@ int tiny_vsnprintf_like(char *buf, const int size, const char *fmt, va_list args
  80091f8:	6818      	ldr	r0, [r3, #0]
  80091fa:	f7ff bfd3 	b.w	80091a4 <_raise_r>
  80091fe:	bf00      	nop
- 8009200:	20000094 	.word	0x20000094
+ 8009200:	20000090 	.word	0x20000090
 
 08009204 <_kill_r>:
  8009204:	b538      	push	{r3, r4, r5, lr}
