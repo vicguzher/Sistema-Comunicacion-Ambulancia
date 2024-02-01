@@ -72,7 +72,7 @@ typedef enum
 #define FSK_AFC_BANDWIDTH             83333
 /* LED blink Period*/
 #define LED_PERIOD_MS                 200
-#define datoTX  "33"
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -105,8 +105,10 @@ bool isMaster = false;
 /* the closest the random delays are, the longer it will
    take for the devices to sync when started simultaneously*/
 static int32_t random_delay;
-
+int valor=0;
 uint8_t inicio =1;
+char pulso[40];
+char coordenadas[] = "coordenadas: 37.683041,-6.620870; ";
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -270,7 +272,6 @@ static void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t LoraS
   APP_LOG(TS_ON, VLEVEL_L, "OnRxDone\n\r");
 #if ((USE_MODEM_LORA == 1) && (USE_MODEM_FSK == 0))
   APP_LOG(TS_ON, VLEVEL_L, "RssiValue=%d dBm, SnrValue=%ddB\n\r", rssi, LoraSnr_FskCfo);
-  APP_LOG(TS_ON, VLEVEL_L, "Valor=%d dBm\n\r", BufferRx);
   /* Record payload Signal to noise ratio in Lora*/
   SnrValue = LoraSnr_FskCfo;
 #endif /* USE_MODEM_LORA | USE_MODEM_FSK */
@@ -282,19 +283,28 @@ static void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t LoraS
   State = RX;
   /* Clear BufferRx*/
   memset(BufferRx, 0, MAX_APP_BUFFER_SIZE);
-  /* Record payload size*/
-  RxBufferSize = size;
-  if (RxBufferSize <= MAX_APP_BUFFER_SIZE)
-  {
-    memcpy(BufferRx, payload, RxBufferSize);
-  }
-  /* Record Received Signal Strength*/
-  RssiValue = rssi;
-  /* Record payload content*/
-  APP_LOG(TS_ON, VLEVEL_H, "Hola");
-  /* Run PingPong process in background*/
-  UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process), CFG_SEQ_Prio_0);
-  /* USER CODE END OnRxDone */
+    /* Record payload size*/
+    RxBufferSize = size;
+    if (RxBufferSize <= MAX_APP_BUFFER_SIZE)
+    {
+      memcpy(BufferRx, payload, RxBufferSize);
+    }
+    /* Record Received Signal Strength*/
+    RssiValue = rssi;
+    /* Record payload content*/
+    APP_LOG(TS_ON, VLEVEL_H, "payload. size=%d \n\r", size);
+    for (int32_t i = 0; i < PAYLOAD_LEN; i++)
+    {
+      APP_LOG(TS_OFF, VLEVEL_H, "%02X", BufferRx[i]);
+      if (i % 16 == 15)
+      {
+        APP_LOG(TS_OFF, VLEVEL_H, "\n\r");
+      }
+    }
+    APP_LOG(TS_OFF, VLEVEL_H, "\n\r");
+    /* Run PingPong process in background*/
+    UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process), CFG_SEQ_Prio_0);
+    /* USER CODE END OnRxDone */
 }
 
 static void OnTxTimeout(void)
@@ -342,51 +352,47 @@ static void PingPong_Process(void)
 
     		if (RxBufferSize > 0)
     		{
-    		if (inicio == 1) //Primera vez que se ejecuta el código
-    		{
-    		if (strncmp((const char *)BufferRx, PONG, sizeof(PONG) - 1) == 0)
-    		//Si lo que hemos recibido es un PONG
-    		{
-    		inicio = 0;
-    		UTIL_TIMER_Stop(&timerLed);
-    		/* switch off green led */
-    		BSP_LED_Off(LED_GREEN);
-    		/* master toggles red led */
-    		BSP_LED_Toggle(LED_RED);
-    		/* Add delay between RX and TX */
-    		HAL_Delay(Radio.GetWakeupTime() + RX_TIME_MARGIN);
-    		/*Mensaje inicial para indicar que somos el receptor de la
-    		temperatura*/
-    		APP_LOG(TS_ON, VLEVEL_L, "Soy el RECEPTOR de la temperatura\n\r")
-    		; //Modificación para la versión 3
-    		/* master sends PING*/
-    		APP_LOG(TS_ON, VLEVEL_L,
-    		"PING"
-    		"\n\r");
-    		memcpy(BufferTx, PING, sizeof(PING) - 1); //Aquí mandamos el
-    		Radio.Send(BufferTx, PAYLOAD_LEN);
-    		}
-    		else /* valid reception but neither a PING or a PONG message */
-    		{
-    		/* Set device as master and start again */
-    		isMaster = true;
-    		Radio.Rx(RX_TIMEOUT_VALUE);
-    		}
-    		}
+				if (inicio == 1) //Primera vez que se ejecuta el código
+					{
+					if (strncmp((const char *)BufferRx, PONG, sizeof(PONG) - 1) == 0)
+					//Si lo que hemos recibido es un PONG
+					{
+						inicio = 0;
+						UTIL_TIMER_Stop(&timerLed);
+						/* switch off green led */
+						BSP_LED_Off(LED_GREEN);
+						/* master toggles red led */
+						BSP_LED_Toggle(LED_RED);
+						/* Add delay between RX and TX */
+						HAL_Delay(Radio.GetWakeupTime() + RX_TIME_MARGIN);
+						/*Mensaje inicial para indicar que somos el receptor de la
+						temperatura*/
+						APP_LOG(TS_ON, VLEVEL_L, "Soy el RECEPTOR de la temperatura\n\r"); //Modificación para la versión 3
+						/* master sends PING*/
+						memcpy(BufferTx, PING, sizeof(PING) - 1); //Aquí mandamos el
+						Radio.Send(BufferTx, PAYLOAD_LEN);
+						}
+						else /* valid reception but neither a PING or a PONG message */
+						{
+							/* Set device as master and start again */
+							isMaster = true;
+							Radio.Rx(RX_TIMEOUT_VALUE);
+						}
+					}
     		if (inicio == 0) //ahora pasamos a la comunicación de información
     		{
-    		UTIL_TIMER_Stop(&timerLed);
-    		/* switch off green led */
-    		BSP_LED_Off(LED_GREEN);
-    		/* master toggles red led */
-    		BSP_LED_Toggle(LED_RED);
-    		/* Add delay between RX and TX */
-    		HAL_Delay(Radio.GetWakeupTime() + RX_TIME_MARGIN);
-    		APP_LOG(TS_ON, VLEVEL_L,(const char *)BufferRx); //Aquí
-    		memcpy(BufferTx, PING, sizeof(PING) - 1);
-    		Radio.Send(BufferTx, PAYLOAD_LEN);
+				UTIL_TIMER_Stop(&timerLed);
+				/* switch off green led */
+				BSP_LED_Off(LED_GREEN);
+				/* master toggles red led */
+				BSP_LED_Toggle(LED_RED);
+				/* Add delay between RX and TX */
+				HAL_Delay(Radio.GetWakeupTime() + RX_TIME_MARGIN);
+				APP_LOG(TS_ON, VLEVEL_L,"pulso: %s\n\r",(const char *)BufferRx); //Aquí
+				memcpy(BufferTx, PING, sizeof(PING) - 1);
+				Radio.Send(BufferTx, PAYLOAD_LEN);
     		}
-    		}
+    	}
 
    	} else{
       if (RxBufferSize > 0){
@@ -403,9 +409,6 @@ static void PingPong_Process(void)
 						temperatura y la humedad */
 						APP_LOG(TS_ON, VLEVEL_L, "Soy el TRANSMISOR de la temperatura\n\r");
 						/*slave sends PONG*/
-						APP_LOG(TS_ON, VLEVEL_L,
-						"PONG"
-						"\n\r");
 						memcpy(BufferTx, PONG, sizeof(PONG) - 1); //Aquí mandamos elmensaje PONG
 						Radio.Send(BufferTx, PAYLOAD_LEN);
 					}
@@ -427,20 +430,24 @@ static void PingPong_Process(void)
 							/* Add delay between RX and TX */
 							HAL_Delay(Radio.GetWakeupTime() + RX_TIME_MARGIN);
 
-
+							valor =  rand() % (220 - 20 + 1) + 20;
+							sprintf(pulso, "%d", valor);
+							APP_LOG(TS_ON, VLEVEL_L,"pulso %s""\n\r",&pulso);
+							strcat(pulso, coordenadas);
                 /* Copiamos en la variable BufferTx el valor de la temperatura
                 y la humedad medida */
-						memcpy(BufferTx, datoTX, sizeof(datoTX) - 1);
+						memcpy(BufferTx, pulso, sizeof(pulso) - 1);
 						Radio.Send(BufferTx, PAYLOAD_LEN); //Enviamos la temperatura
 						APP_LOG(TS_ON, VLEVEL_L,"Temperatura enviada""\n\r");
+						APP_LOG(TS_ON, VLEVEL_L,"buffer: %s""\n\r", (const char *)BufferTx);
 						}
                 else /* valid reception but not a PING as expected */
 					{
-					Radio.Rx(RX_TIMEOUT_VALUE);
+						Radio.Rx(RX_TIMEOUT_VALUE);
 					}
-					}
-					}
-                break;
+				}
+			}
+    break;
     case TX:
       APP_LOG(TS_ON, VLEVEL_L, "Rx start\n\r");
       Radio.Rx(RX_TIMEOUT_VALUE);

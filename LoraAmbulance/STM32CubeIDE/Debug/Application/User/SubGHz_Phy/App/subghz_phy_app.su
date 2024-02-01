@@ -1,8 +1,8 @@
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:334:13:PingPong_Process	16	static
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:322:13:OnRxError	8	static
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:311:13:OnRxTimeout	8	static
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:300:13:OnTxTimeout	8	static
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:267:13:OnRxDone	32	static
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:256:13:OnTxDone	8	static
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:476:13:OnledEvent	8	static
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:157:6:SubghzApp_Init	72	static
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:344:13:PingPong_Process	24	static
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:332:13:OnRxError	8	static
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:321:13:OnRxTimeout	8	static
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:310:13:OnTxTimeout	8	static
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:269:13:OnRxDone	32	static
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:258:13:OnTxDone	8	static
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:483:13:OnledEvent	8	static
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:159:6:SubghzApp_Init	72	static
