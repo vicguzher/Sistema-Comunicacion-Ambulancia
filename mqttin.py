@@ -5,9 +5,9 @@ import geojson
 
 # Configuración de InfluxDB
 url = "http://localhost:8086"  # URL del servidor InfluxDB
-token = "6Ob2rVzxmQtNQKMfr1n-kqfALCFRL-CQoyvJEWpsp5Ffsry-JAfaOx4BNgSuU_3059pqJ9bM5flcQlSoJpRnqw=="  # Token de autenticación de InfluxDB
-org = "US"  # Nombre de la organización en InfluxDB
-bucket = "pulso"  # Nombre del bucket en InfluxDB
+token = "LXQ7r0wH502_QsglxfxyN2723foxTw682SSCRVryCByBPot6ZzGgjoFZX2Pkr-1CSTfj8NgqBymoDRdZb3kkIg=="  # Token de autenticación de InfluxDB
+org = "vicguzher"  # Nombre de la organización en InfluxDB
+bucket = "prueba"  # Nombre del bucket en InfluxDB
 
 client = InfluxDBClient(url=url, token=token, org=org)
 write_api = client.write_api(write_options=SYNCHRONOUS)
@@ -17,8 +17,8 @@ def on_connect(client, userdata, flags, rc):
     if rc == 0:
         print("Conexión exitosa al broker MQTT")
         # Una vez conectado, suscríbete al tema (topic) que desees
-        client.subscribe("pulso")
-        client.subscribe("coordenadas")
+        client.subscribe("ambulance/pulso")
+        client.subscribe("ambulance/location")
     else:
         print(f"Fallo en la conexión al broker MQTT. Código de retorno: {rc}")
 
@@ -26,18 +26,17 @@ def on_message(client, userdata, msg):
     # Esta función se ejecutará cada vez que se reciba un mensaje en el tema suscrito
     print(f"Mensaje recibido en el topic {msg.topic}: {msg.payload.decode()}")
     # Procesar mensaje según el topic
-    if msg.topic == "pulso":
+    if msg.topic == "ambulance/pulso":
         try:
             pulso = float(msg.payload.decode())
             print(type(pulso))
             write_api.write(bucket=bucket, record=[{"measurement": "pulso", "fields": {"valor": pulso}}])
         except ValueError:
             print("Error: El mensaje no es un número flotante válido.")
-    elif msg.topic == "coordenadas":
+    elif msg.topic == "ambulance/location":
         try:
-            latitud, longitud = map(float, msg.payload.decode().split(","))
-            point_geojson = geojson.Point((longitud, latitud))
-            write_api.write(bucket=bucket, record=[{"measurement": "coordenadas", "fields": {"geojson": geojson.dumps(point_geojson)}}])
+            lat, lon = map(float, msg.payload.decode().split(","))
+            write_api.write(bucket=bucket, record=[{"measurement": "location", "fields": {"lat": lat, "lon":lon}}])
         except ValueError:
             print("Error: El mensaje de coordenadas no es válido.")
 

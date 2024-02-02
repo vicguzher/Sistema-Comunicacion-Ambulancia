@@ -22,6 +22,7 @@ try:
 
         # Buscar la palabra "pulso:" en la cadena
         indice_pulso = lectura_serial.find("pulso:")
+        indice_rssi = lectura_serial.find("RssiValue=")
 
         if indice_pulso != -1:
             # Encontrar el índice de inicio y final del mensaje deseado
@@ -40,10 +41,10 @@ try:
                 coordenadas = mensaje_pulso[indice_coordenadas + len("coordenadas:"):].strip()
 
                 # Enviar el mensaje antes de "coordenadas:" por MQTT al topic "coordenadas"
-                cliente_mqtt.publish("pulso", pulso)
+                cliente_mqtt.publish("ambulance/pulso", pulso)
 
                 # Enviar el mensaje después de "coordenadas:" por MQTT al topic "coordenadas"
-                cliente_mqtt.publish("coordenadas", coordenadas)
+                cliente_mqtt.publish("ambulance/location", coordenadas)
 
 except KeyboardInterrupt:
     print("Detención del programa por el usuario")
