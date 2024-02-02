@@ -9,7 +9,7 @@ import serial
 import paho.mqtt.client as mqtt
 
 # Configuración del puerto serie
-puerto_serie = serial.Serial('/dev/ttyUSB0', 115200)  # Ajusta el nombre del puerto según tu configuración
+puerto_serie = serial.Serial('COM16', 115200)  # Ajusta el nombre del puerto según tu configuración
 
 # Configuración del cliente MQTT
 cliente_mqtt = mqtt.Client()

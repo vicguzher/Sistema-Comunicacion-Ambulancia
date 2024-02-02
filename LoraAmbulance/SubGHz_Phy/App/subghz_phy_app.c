@@ -100,7 +100,7 @@ int8_t SnrValue = 0;
 /* Led Timers objects*/
 static UTIL_TIMER_Object_t timerLed;
 /* device state. Master: true, Slave: false*/
-bool isMaster = false;
+bool isMaster = true;
 /* random delay to make sure 2 devices will sync*/
 /* the closest the random delays are, the longer it will
    take for the devices to sync when started simultaneously*/
