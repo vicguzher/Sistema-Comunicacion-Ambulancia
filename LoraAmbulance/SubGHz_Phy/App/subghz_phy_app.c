@@ -271,12 +271,14 @@ static void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t LoraS
   /* USER CODE BEGIN OnRxDone */
   APP_LOG(TS_ON, VLEVEL_L, "OnRxDone\n\r");
 #if ((USE_MODEM_LORA == 1) && (USE_MODEM_FSK == 0))
-  APP_LOG(TS_ON, VLEVEL_L, "RssiValue=%d dBm, SnrValue=%ddB\n\r", rssi, LoraSnr_FskCfo);
+  APP_LOG(TS_ON, VLEVEL_L, "RssiValue=%d;\n\r", rssi);
+  APP_LOG(TS_ON, VLEVEL_L,  "Cfo=%d;\n\r", LoraSnr_FskCfo);
   /* Record payload Signal to noise ratio in Lora*/
   SnrValue = LoraSnr_FskCfo;
 #endif /* USE_MODEM_LORA | USE_MODEM_FSK */
 #if ((USE_MODEM_LORA == 0) && (USE_MODEM_FSK == 1))
-  APP_LOG(TS_ON, VLEVEL_L, "RssiValue=%d dBm, Cfo=%dkHz\n\r", rssi, LoraSnr_FskCfo);
+  APP_LOG(TS_ON, VLEVEL_L, "RssiValue=%d;\n\r", rssi);
+  APP_LOG(TS_ON, VLEVEL_L,  "Cfo=%d;\n\r", LoraSnr_FskCfo);
   SnrValue = 0; /*not applicable in GFSK*/
 #endif /* USE_MODEM_LORA | USE_MODEM_FSK */
   /* Update the State of the FSM*/

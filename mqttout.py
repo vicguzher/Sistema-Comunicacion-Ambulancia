@@ -9,7 +9,7 @@ import serial
 import paho.mqtt.client as mqtt
 
 # Configuración del puerto serie
-puerto_serie = serial.Serial('COM16', 115200)  # Ajusta el nombre del puerto según tu configuración
+puerto_serie = serial.Serial('/dev/ttyUSB0', 115200)  # Ajusta el nombre del puerto según tu configuración
 
 # Configuración del cliente MQTT
 cliente_mqtt = mqtt.Client()
@@ -23,7 +23,24 @@ try:
         # Buscar la palabra "pulso:" en la cadena
         indice_pulso = lectura_serial.find("pulso:")
         indice_rssi = lectura_serial.find("RssiValue=")
+        indice_Cfo = lectura_serial.find("Cfo=")
 
+        if indice_rssi != -1:
+            inicio = indice_rssi + len("RssiValue=")
+            fin = lectura_serial.find(";", inicio)
+
+            # Extraer el mensaje entre "pulso:" y ";"
+            rssi = lectura_serial[inicio:fin]
+            cliente_mqtt.publish("ambulance/rssi", rssi)
+            
+        if indice_Cfo != -1:
+              inicio = indice_Cfo + len("Cfo=")
+              fin = lectura_serial.find(";", inicio)
+
+              # Extraer el mensaje entre "pulso:" y ";"
+              cfo = lectura_serial[inicio:fin]
+              cliente_mqtt.publish("ambulance/cfo", cfo)    
+            
         if indice_pulso != -1:
             # Encontrar el índice de inicio y final del mensaje deseado
             inicio = indice_pulso + len("pulso:")

@@ -5,9 +5,9 @@ import geojson
 
 # Configuración de InfluxDB
 url = "http://localhost:8086"  # URL del servidor InfluxDB
-token = "LXQ7r0wH502_QsglxfxyN2723foxTw682SSCRVryCByBPot6ZzGgjoFZX2Pkr-1CSTfj8NgqBymoDRdZb3kkIg=="  # Token de autenticación de InfluxDB
-org = "vicguzher"  # Nombre de la organización en InfluxDB
-bucket = "prueba"  # Nombre del bucket en InfluxDB
+token = "vicguzher"  # Token de autenticación de InfluxDB
+org = "US"  # Nombre de la organización en InfluxDB
+bucket = "ambulancia"  # Nombre del bucket en InfluxDB
 
 client = InfluxDBClient(url=url, token=token, org=org)
 write_api = client.write_api(write_options=SYNCHRONOUS)
@@ -19,6 +19,8 @@ def on_connect(client, userdata, flags, rc):
         # Una vez conectado, suscríbete al tema (topic) que desees
         client.subscribe("ambulance/pulso")
         client.subscribe("ambulance/location")
+        client.subscribe("ambulance/rssi")
+        client.subscribe("ambulance/cfo")
     else:
         print(f"Fallo en la conexión al broker MQTT. Código de retorno: {rc}")
 
@@ -39,6 +41,19 @@ def on_message(client, userdata, msg):
             write_api.write(bucket=bucket, record=[{"measurement": "location", "fields": {"lat": lat, "lon":lon}}])
         except ValueError:
             print("Error: El mensaje de coordenadas no es válido.")
+    elif msg.topic == "ambulance/rssi":
+            try:
+                rssi = float(msg.payload.decode())
+                write_api.write(bucket=bucket, record=[{"measurement": "rssi", "fields": {"valor": rssi}}])
+            except ValueError:
+                print("Error: El mensaje no es un número flotante válido.")
+                
+    elif msg.topic == "ambulance/cfo":
+             try:
+                 snr = float(msg.payload.decode())
+                 write_api.write(bucket=bucket, record=[{"measurement": "snr", "fields": {"valor": snr}}])
+             except ValueError:
+                 print("Error: El mensaje no es un número flotante válido.")
 
 # Crear un cliente MQTT
 client = mqtt.Client()
