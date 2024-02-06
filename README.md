@@ -10,7 +10,8 @@ Para resolver este problema se hará uso de la tecnología LoRa, la cual permite
 
 ## 2	Arquitectura del Sistema
 La arquitectura del sistema seguirá el siguiente esquema:
- 
+ ![imagen](https://github.com/vicguzher/Sistema-Comunicacion-Ambulancia/assets/117984099/9995e3d9-7287-4447-a938-3e2af412d13d)
+
 
 Se dispondrá de una placa stm32wl55 que actuará de transmisor simulando estar conectado a un pulsómetro y a un dispositivo GPS, este transmitirá la información mediante LoRa a otra placa stm32wl55 que actuará de Gateway. Esta recibirá la señal transmitida y mandará esa información por puerto serie. Un script en Python se encontrará en ejecución leyendo el puerto serie correspondiente, tras el procesado de los datos, transmitirá mediante MQTT a un bróker cloud gratuito que proporciona la empresa HiveMQ (https://www.hivemq.com/mqtt/public-mqtt-broker/). Por otro lado, se tendrá un script en Python que estará suscrito a los topic pertinentes, además será el encargado de escribir los datos recogido en la base de datos InfluxDB. Una vez los datos se encuentren en la BBDD, mediante el software OpenSource Grafana serán visualizados.
 
