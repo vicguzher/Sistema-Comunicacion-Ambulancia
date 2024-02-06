@@ -10,6 +10,7 @@ Para resolver este problema se hará uso de la tecnología LoRa, la cual permite
 
 ## 2	Arquitectura del Sistema
 La arquitectura del sistema seguirá el siguiente esquema:
+
  ![imagen](https://github.com/vicguzher/Sistema-Comunicacion-Ambulancia/assets/117984099/9995e3d9-7287-4447-a938-3e2af412d13d)
 
 
