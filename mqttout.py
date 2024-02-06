@@ -9,11 +9,11 @@ import serial
 import paho.mqtt.client as mqtt
 
 # Configuración del puerto serie
-puerto_serie = serial.Serial('COM16', 115200)  # Ajusta el nombre del puerto según tu configuración
+puerto_serie = serial.Serial('COM16', 115200) 
 
 # Configuración del cliente MQTT
 cliente_mqtt = mqtt.Client()
-cliente_mqtt.connect("broker.hivemq.com", 1883)  # Ajusta el host y el puerto MQTT según tu configuración
+cliente_mqtt.connect("broker.hivemq.com", 1883) # Conectar al broker MQTT
 
 try:
     while True:

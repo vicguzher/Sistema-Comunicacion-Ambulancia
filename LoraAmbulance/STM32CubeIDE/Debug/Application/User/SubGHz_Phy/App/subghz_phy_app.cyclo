@@ -1,8 +1,8 @@
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:346:13:PingPong_Process	16
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:334:13:OnRxError	1
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:323:13:OnRxTimeout	1
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:312:13:OnTxTimeout	1
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:269:13:OnRxDone	4
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:258:13:OnTxDone	1
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:485:13:OnledEvent	1
-C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:159:6:SubghzApp_Init	2
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:344:13:PingPong_Process	16
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:332:13:OnRxError	1
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:321:13:OnRxTimeout	1
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:310:13:OnTxTimeout	1
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:267:13:OnRxDone	4
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:256:13:OnTxDone	1
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:480:13:OnledEvent	1
+C:/Users/vicen/Desktop/Sistema-Comunicacion-Ambulancia/LoraAmbulance/SubGHz_Phy/App/subghz_phy_app.c:159:6:SubghzApp_Init	1

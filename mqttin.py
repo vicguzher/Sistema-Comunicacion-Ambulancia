@@ -15,7 +15,7 @@ write_api = client.write_api(write_options=SYNCHRONOUS)
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
         print("Conexión exitosa al broker MQTT")
-        # Una vez conectado, suscríbete al tema (topic) que desees
+        # Una vez conectado, suscripcion al topic
         client.subscribe("ambulance/pulso")
         client.subscribe("ambulance/location")
         client.subscribe("ambulance/rssi")
@@ -61,8 +61,7 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 
-# Conectar al broker MQTT (debes reemplazar "mqtt.example.com" por la dirección del broker)
-# Por defecto, el broker utiliza el puerto 1883
+# Conectar al broker MQTT
 client.connect("broker.hivemq.com", 1883, 60)
 
 # Mantener la conexión activa y escuchar por siempre
