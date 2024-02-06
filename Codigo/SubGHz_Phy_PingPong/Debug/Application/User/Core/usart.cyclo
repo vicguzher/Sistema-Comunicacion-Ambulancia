@@ -1,3 +1,0 @@
-C:/Users/vicen/STM32Cube/Example/SubGHz_Phy_PingPong/Core/Src/usart.c:33:6:MX_USART2_UART_Init	5
-C:/Users/vicen/STM32Cube/Example/SubGHz_Phy_PingPong/Core/Src/usart.c:76:6:HAL_UART_MspInit	7
-C:/Users/vicen/STM32Cube/Example/SubGHz_Phy_PingPong/Core/Src/usart.c:165:6:HAL_UART_MspDeInit	2
